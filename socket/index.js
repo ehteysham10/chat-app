@@ -4,7 +4,7 @@ const Message = require("../models/Message");
 const socketHandler = (io) => {
   io.use((socket, next) => {
     const token = socket.handshake.auth?.token?.split(" ")[1];
-    if (!token) return next(new Error("Authentication error"));
+    if (!token) return next(new Error("Authentication error happened"));
 
     try {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
